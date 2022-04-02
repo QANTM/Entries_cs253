@@ -1,10 +1,10 @@
 # 深入了解现代网络浏览器 4
 
-## 输入进入合成器
+### 输入进入合成器
 
 这是 Chrome 内部的 4 部分博客系列的最后一篇；调查它如何处理我们的代码以显示网站。在上一篇文章中，我们查看[了渲染过程并了解了合成器](https://developers.google.com//web/updates/2018/09/inside-browser-part3)。在这篇文章中，我们将了解当用户输入进入时合成器如何实现流畅的交互。
 
-## 从浏览器的角度输入事件
+### 从浏览器的角度输入事件
 
 当您听到“输入事件”时，您可能只会想到输入文本框或单击鼠标，但从浏览器的角度来看，输入意味着用户的任何手势。鼠标滚轮滚动是一个输入事件，触摸或鼠标悬停也是一个输入事件。
 
@@ -12,15 +12,11 @@
 
 ![输入事件](https://wd.imgix.net/image/T4FyVKpzu4WKF1kBNvXepbi08t52/ahDODQbpiTZX6lauff5T.png?auto=format)图 1：通过浏览器进程路由到渲染器进程的输入事件
 
-## 合成器接收输入事件
-
-<video autoplay="" controls="" loop="" muted="" playsinline="" style="box-sizing: border-box; width: 700px;"></video>
-
-图 2：视口悬停在页面图层上
+### 合成器接收输入事件
 
 在上一篇文章中，我们研究了合成器如何通过合成光栅化图层来平滑地处理滚动。如果页面上没有附加输入事件侦听器，则合成器线程可以创建一个完全独立于主线程的新合成框架。但是，如果某些事件侦听器附加到页面怎么办？合成器线程如何确定是否需要处理事件？
 
-## 了解非快速滚动区域
+### 了解非快速滚动区域
 
 由于运行 JavaScript 是主线程的工作，因此当页面被合成时，合成器线程将页面中附加了事件处理程序的区域标记为“非快速滚动区域”。通过拥有这些信息，如果事件发生在该区域，合成器线程可以确保将输入事件发送到主线程。如果输入事件来自该区域之外，则合成器线程继续合成新帧，而无需等待主线程。
 
@@ -52,7 +48,7 @@ document.body.addEventListener('touchstart', event => {
  }, {passive: true});
 ```
 
-## 检查事件是否可取消
+### 检查事件是否可取消
 
 ![页面滚动](https://wd.imgix.net/image/T4FyVKpzu4WKF1kBNvXepbi08t52/Y3cPoWi9S1uczLToDxcx.png?auto=format)图 5：部分页面固定为水平滚动的网页
 
@@ -79,13 +75,13 @@ document.body.addEventListener('pointermove', event => {
 }
 ```
 
-## 寻找事件目标
+### 寻找事件目标
 
 ![命中测试](https://wd.imgix.net/image/T4FyVKpzu4WKF1kBNvXepbi08t52/6dN5zsCK46dMNqwkO7EG.png?auto=format)图 6：查看绘制记录的主线程询问在 xy 点上绘制了什么
 
 当合成器线程向主线程发送输入事件时，首先要运行的是命中测试以查找事件目标。命中测试使用在渲染过程中生成的绘制记录数据来找出事件发生的点坐标下方的内容。
 
-## 最小化事件分派到主线程
+### 最小化事件分派到主线程
 
 在上一篇文章中，我们讨论了我们的典型显示器如何每秒刷新 60 次屏幕，以及我们需要如何跟上节奏以实现流畅的动画。对于输入，典型的触摸屏设备每秒传递 60-120 次触摸事件，而典型的鼠标每秒传递 100 次事件。输入事件具有比我们的屏幕刷新更高的保真度。
 
@@ -99,7 +95,7 @@ document.body.addEventListener('pointermove', event => {
 
 任何离散事件，如`keydown`、`keyup`、`mouseup`、`mousedown`、`touchstart`和都会`touchend`立即分派。
 
-## 用于`getCoalescedEvents`获取帧内事件
+### 用于`getCoalescedEvents`获取帧内事件
 
 对于大多数 Web 应用程序，合并事件应该足以提供良好的用户体验。但是，如果您正在构建诸如绘图应用程序并基于`touchmove`坐标放置路径，您可能会丢失中间坐标以绘制平滑线。在这种情况下，您可以使用`getCoalescedEvents`指针事件中的方法来获取有关这些合并事件的信息。
 
@@ -116,24 +112,22 @@ window.addEventListener('pointermove', event => {
 });
 ```
 
-## 下一步
+### 下一步
 
 在本系列中，我们介绍了 Web 浏览器的内部工作原理。如果您从未想过为什么 DevTools 建议添加`{passive: true}`事件处理程序或为什么您可能会`async`在脚本标签中写入属性，我希望本系列文章能够阐明为什么浏览器需要这些信息来提供更快、更流畅的 Web 体验。
 
-### 使用灯塔
+##### 使用灯塔
 
 如果您想让您的代码对浏览器友好，但不知道从哪里开始，[Lighthouse](https://developers.google.com/web/tools/lighthouse/)是一种工具，可以对任何网站进行审核，并为您提供关于哪些方面做得正确以及哪些方面需要改进的报告。阅读审核列表还可以让您了解浏览器关心什么样的事情。
 
-### 了解如何衡量绩效
+##### 了解如何衡量绩效
 
 不同网站的性能调整可能会有所不同，因此衡量网站的性能并确定最适合您网站的方法至关重要。Chrome DevTools 团队几乎没有关于[如何衡量网站性能的](https://developers.google.com/web/tools/chrome-devtools/speed/get-started)教程。
 
-### 将功能策略添加到您的站点
+##### 将功能策略添加到您的站点
 
 如果您想采取额外措施，[Feature Policy](https://developers.google.com/web/updates/2018/06/feature-policy)是一种新的 Web 平台功能，可以在您构建项目时成为您的护栏。开启功能策略可以保证您的应用程序的某些行为并防止您犯错误。例如，如果您想确保您的应用永远不会阻止解析，您可以在同步脚本策略上运行您的应用。启用后，将`sync-script: 'none'`阻止解析器阻止 JavaScript 执行。这可以防止您的任何代码阻塞解析器，并且浏览器无需担心暂停解析器。
 
-## 包起来
-
-![谢谢](https://wd.imgix.net/image/T4FyVKpzu4WKF1kBNvXepbi08t52/DWCBZ2oQ5ni2ewTPh4Lb.png?auto=format)
+##### 结束
 
 当我开始构建网站时，我几乎只关心我将如何编写我的代码以及什么可以帮助我提高工作效率。这些东西很重要，但我们还应该考虑浏览器如何获取我们编写的代码。现代浏览器已经并将继续投资于为用户提供更好的网络体验的方法。通过组织我们的代码来对浏览器友好，进而改善您的用户体验。我希望你和我一起寻求对浏览器友好！
