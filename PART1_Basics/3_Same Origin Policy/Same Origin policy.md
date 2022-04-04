@@ -4,7 +4,7 @@
 
 它有助于隔离潜在的恶意文档，减少可能的攻击媒介。例如，它可以防止 Internet 上的恶意网站在浏览器中运行 JS，以从第三方 Web 邮件服务（用户登录）或公司内网（通过以下方式防止攻击者直接访问）读取数据没有公共 IP 地址）并将该数据转发给攻击者。
 
-## [原产地的定义](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy#definition_of_an_origin)
+## Origin 的定义
 
 如果两个 URL的[协议](https://developer.mozilla.org/en-US/docs/Glossary/Protocol)、[端口](https://developer.mozilla.org/en-US/docs/Glossary/Port)（如果指定）和[主机](https://developer.mozilla.org/en-US/docs/Glossary/Host)相同，则两个 URL 具有*相同的来源*。您可能会看到这被称为“方案/主机/端口元组”，或者只是“元组”。（“元组”是一组项目，它们共同构成一个整体——双/三/四/五/等的通用形式。）
 
@@ -18,7 +18,7 @@
 | `http://store.company.com:81/dir/page.html`       | 失败 | 不同的端口（`http://`默认为80端口） |
 | `http://news.company.com/dir/page.html`           | 失败 | 不同的主机                          |
 
-### [继承的起源](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy#inherited_origins)
+### 继承的起源
 
 从具有`about:blank`或`javascript:`URL 的页面执行的脚本会继承包含该 URL 的文档的来源，因为这些类型的 URL 不包含有关源服务器的信息。
 
@@ -26,7 +26,7 @@
 
 `data:`URL 获得一个新的、空的、安全上下文。
 
-### [Internet Explorer 中的异常](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy#exceptions_in_internet_explorer)
+### Internet Explorer 中的异常
 
 Internet Explorer 对同源策略有两个主要例外：
 
@@ -40,13 +40,13 @@ Internet Explorer 对同源策略有两个主要例外：
 
 这些例外是非标准的，并且在任何其他浏览器中均不受支持。
 
-### [文件来源](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy#file_origins)
+### 文件来源
 
 `file:///`现代浏览器通常将使用模式 加载的文件的来源视为*不透明的来源*。这意味着如果一个文件包含来自同一文件夹的其他文件（例如），则它们不会被假定来自同一来源，并且可能会触发[CORS](https://developer.mozilla.org/en-US/docs/Glossary/CORS)错误。
 
 请注意，[URL 规范](https://url.spec.whatwg.org/#origin)声明文件的来源取决于实现，并且某些浏览器可能会将同一目录或子目录中的文件视为同源，即使这具有[安全隐患](https://www.mozilla.org/en-US/security/advisories/mfsa2019-21/#CVE-2019-11730)。
 
-## [改变原点](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy#changing_origin)
+## 改变原点
 
 **警告：**此处描述的方法（使用[`document.domain`](https://developer.mozilla.org/en-US/docs/Web/API/Document/domain)setter）已被弃用，因为它破坏了同源策略提供的安全保护，并使浏览器中的源模型复杂化，从而导致互操作性问题和安全漏洞。
 
@@ -68,7 +68,7 @@ document.domain = "company.com";
 
 **注意：**当使用`document.domain`允许子域访问其父域时，需要在父域和子域中设置`document.domain`为*相同的值。*即使这样做是将父域设置回其原始值，这也是必要的。不这样做可能会导致权限错误。
 
-## [跨域网络访问](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy#cross-origin_network_access)
+## 跨域网络访问
 
 同源策略控制两个不同源之间的交互，例如当您使用[`XMLHttpRequest`](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest)或[``](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img)元素时。这些交互通常分为三类：
 
@@ -86,17 +86,17 @@ document.domain = "company.com";
 - 应用的字体[`@font-face`](https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face)。有些浏览器允许跨域字体，有些则需要同源。
 - 嵌入的任何东西[``](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe)。站点可以使用[`X-Frame-Options`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options)标题来防止跨域框架。
 
-### [如何允许跨域访问](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy#how_to_allow_cross-origin_access)
+### 如何允许跨域访问
 
 使用[CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)允许跨域访问。CORS 是[HTTP](https://developer.mozilla.org/en-US/docs/Glossary/HTTP)的一部分，它允许服务器指定浏览器应允许从其加载内容的任何其他主机。
 
-### [如何阻止跨域访问](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy#how_to_block_cross-origin_access)
+### 如何阻止跨域访问
 
 - 为防止跨域写入，请检查请求中不可猜测的令牌 - 称为[跨站点请求伪造 (CSRF)](https://owasp.org/www-community/attacks/csrf)令牌。您必须防止跨域读取需要此令牌的页面。
 - 为防止资源的跨域读取，请确保它不可嵌入。通常有必要防止嵌入，因为嵌入资源总是会泄露一些关于它的信息。
 - 为防止跨域嵌入，请确保您的资源不能被解释为上面列出的可嵌入格式之一。浏览器可能不尊重`Content-Type`标题。例如，如果您将`<script>`标签指向 HTML 文档，浏览器将尝试将 HTML 解析为 JavaScript。当您的资源不是站点的入口点时，您还可以使用 CSRF 令牌来防止嵌入。
 
-## [跨域脚本API访问](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy#cross-origin_script_api_access)
+## 跨域脚本API访问
 
 JavaScript API 像[`iframe.contentWindow`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLIFrameElement/contentWindow), [`window.parent`](https://developer.mozilla.org/en-US/docs/Web/API/Window/parent),[`window.open`](https://developer.mozilla.org/en-US/docs/Web/API/Window/open)和[`window.opener`](https://developer.mozilla.org/en-US/docs/Web/API/Window/opener)允许文档直接相互引用。当两个文档的来源不同时，这些引用提供对对象的访问非常有限[`Window`](https://developer.mozilla.org/en-US/docs/Web/API/Window)，[`Location`](https://developer.mozilla.org/en-US/docs/Web/API/Location)如下两节所述。
 
@@ -104,7 +104,7 @@ JavaScript API 像[`iframe.contentWindow`](https://developer.mozilla.org/en-US/d
 
 规范：[HTML 生活标准§ 跨域对象](https://html.spec.whatwg.org/multipage/browsers.html#cross-origin-objects)。
 
-### [窗户](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy#window)
+### Window
 
 `Window`允许对这些属性进行以下跨域访问：
 
@@ -129,7 +129,7 @@ JavaScript API 像[`iframe.contentWindow`](https://developer.mozilla.org/en-US/d
 
 一些浏览器允许访问比上述更多的属性。
 
-### [地点](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy#location)
+### Location
 
 `Location`允许对属性进行以下跨域访问：
 
@@ -143,13 +143,13 @@ JavaScript API 像[`iframe.contentWindow`](https://developer.mozilla.org/en-US/d
 
 一些浏览器允许访问比上述更多的属性。
 
-## [跨域数据存储访问](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy#cross-origin_data_storage_access)
+## 跨域数据存储访问
 
 对存储在浏览器中的数据（例如[Web Storage](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API)和[IndexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API) ）的访问按来源分开。每个源都有自己独立的存储，一个源中的 JavaScript 无法读取或写入属于另一个源的存储。
 
 [Cookie](https://developer.mozilla.org/en-US/docs/Glossary/Cookie)使用单独的来源定义。页面可以为自己的域或任何父域设置 cookie，只要父域不是公共后缀即可。Firefox 和 Chrome 使用[公共后缀列表](https://publicsuffix.org/)来确定域是否为公共后缀。Internet Explorer 使用自己的内部方法来确定域是否为公共后缀。无论使用哪种协议 (HTTP/HTTPS) 或端口，浏览器都会为给定域（包括任何子域）提供 cookie。设置 cookie 时，您可以使用`Domain`、`Path`、`Secure`和`HttpOnly`标志来限制其可用性。当您读取 cookie 时，您无法看到它的设置位置。即使您只使用安全的 https 连接，您看到的任何 cookie 也可能是使用不安全的连接设置的。
 
-## [也可以看看](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy#see_also)
+## 也可以看看
 
 - [W3C 的同源政策](https://www.w3.org/Security/wiki/Same_Origin_Policy)
 - [web.dev 的同源策略](https://web.dev/secure/same-origin-policy)
