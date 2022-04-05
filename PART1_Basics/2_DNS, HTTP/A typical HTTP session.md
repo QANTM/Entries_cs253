@@ -1,5 +1,3 @@
-# Entries_cs253_PART1_Notes
-
 # 典型的 HTTP 会话
 
 在客户端-服务器协议（如 HTTP）中，会话由三个阶段组成：
@@ -10,7 +8,7 @@
 
 从 HTTP/1.1 开始，连接在完成第三阶段后不再关闭，并且客户端现在被授予进一步的请求：这意味着第二和第三阶段现在可以执行任意次数。
 
-## [建立连接](https://developer.mozilla.org/en-US/docs/Web/HTTP/Session#establishing_a_connection)
+## 建立连接
 
 在客户端-服务器协议中，建立连接的是客户端。在 HTTP 中打开连接意味着在底层传输层中启动连接，通常是 TCP。
 
@@ -18,7 +16,7 @@
 
 **注意：**客户端-服务器模型不允许服务器在没有明确请求的情况下向客户端发送数据。为了解决这个问题，Web 开发人员使用了几种技术：通过 API 定期 ping 服务器[`XMLHTTPRequest`](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest)，[`fetch()`](https://developer.mozilla.org/en-US/docs/Web/API/fetch)使用[WebSockets API](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API)或类似协议。
 
-## [发送客户端请求](https://developer.mozilla.org/en-US/docs/Web/HTTP/Session#sending_a_client_request)
+## 发送客户端请求
 
 建立连接后，用户代理可以发送请求（用户代理通常是 Web 浏览器，但也可以是其他任何东西，例如爬虫）。客户端请求由文本指令组成，由 CRLF（回车，后跟换行）分隔，分为三个块：
 
@@ -28,7 +26,7 @@
 2. 随后的行代表一个 HTTP 标头，向服务器提供有关哪种类型的数据是合适的（例如，什么语言、什么 MIME 类型）或其他改变其行为的数据（例如，如果它已被缓存，则不发送答案） . 这些 HTTP 标头形成一个以空行结尾的块。
 3. 最后一个块是一个可选的数据块，它可能包含更多的数据，主要由 POST 方法使用。
 
-### [示例请求](https://developer.mozilla.org/en-US/docs/Web/HTTP/Session#example_requests)
+### 示例请求
 
 获取 developer.mozilla.org 的根页面 ( `https://developer.mozilla.org/`)，并告诉服务器用户代理更喜欢法语页面，如果可能的话：
 
@@ -51,14 +49,14 @@ Content-Type: application/x-www-form-urlencoded
 name=Joe%20User&request=Send%20me%20one%20of%20your%20catalogue
 ```
 
-### [请求方法](https://developer.mozilla.org/en-US/docs/Web/HTTP/Session#request_methods)
+### 请求方法
 
 HTTP 定义了一组[请求方法](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods)，指示要对资源执行的所需操作。尽管它们也可以是名词，但这些请求方法有时被称为 HTTP 动词。最常见的请求是`GET`and `POST`：
 
 - 该[`GET`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/GET)方法请求指定资源的数据表示。使用的请求`GET`应该只检索数据。
 - 该[`POST`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST)方法将数据发送到服务器，因此它可以更改其状态。这是[HTML 表单](https://developer.mozilla.org/en-US/docs/Learn/Forms)经常使用的方法。
 
-## [服务器响应的结构](https://developer.mozilla.org/en-US/docs/Web/HTTP/Session#structure_of_a_server_response)
+## 服务器响应的结构
 
 连接的代理发送请求后，Web 服务器对其进行处理，并最终返回响应。与客户端请求类似，服务器响应由文本指令组成，由 CRLF 分隔，但分为三个块：
 
@@ -66,7 +64,7 @@ HTTP 定义了一组[请求方法](https://developer.mozilla.org/en-US/docs/Web/
 2. 随后的行表示特定的 HTTP 标头，为客户端提供有关已发送数据的信息（例如，类型、数据大小、使用的压缩算法、有关缓存的提示）。与客户端请求的 HTTP 标头块类似，这些 HTTP 标头形成一个以空行结尾的块。
 3. 最后一个块是一个数据块，其中包含可选数据。
 
-### [示例响应](https://developer.mozilla.org/en-US/docs/Web/HTTP/Session#example_responses)
+### 示例响应
 
 成功的网页响应：
 
@@ -139,7 +137,7 @@ X-Cache: Error from cloudfront
 <!DOCTYPE html... (contains a site-customized page helping the user to find the missing resource)
 ```
 
-### [响应状态代码](https://developer.mozilla.org/en-US/docs/Web/HTTP/Session#response_status_codes)
+### 响应状态代码
 
 [HTTP 响应状态代码](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)指示特定 HTTP 请求是否已成功完成。响应分为五类：信息响应、成功响应、重定向、客户端错误和服务器错误。
 
@@ -147,7 +145,7 @@ X-Cache: Error from cloudfront
 - [`301`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/301): 永久移动。此响应代码表示请求资源的 URI 已更改。
 - [`404`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404)： 未找到。服务器找不到请求的资源。
 
-## [也可以看看](https://developer.mozilla.org/en-US/docs/Web/HTTP/Session#see_also)
+## 也可以看看
 
 - [识别网络上的资源](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Identifying_resources_on_the_Web)
 - [HTTP 标头](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers)
