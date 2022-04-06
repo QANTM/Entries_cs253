@@ -1,6 +1,6 @@
 # 当你输入 URL 按下 enter 会发生什么
 
-![typeurl](C:\Users\z\Desktop\typeurl.jpg)
+![typeurl](../../statics/typeurl.jpg)
 
 ### 1. DNS域名解析
 
@@ -29,7 +29,7 @@ TCP是一个端到端的可靠的面向连接的协议，所以HTTP基于传输�
 
 请求报文：
 
-![request](C:\Users\z\Desktop\request.jpg)
+![request](../../statics/request.jpg)
 
 请求报文
 
@@ -57,7 +57,7 @@ TCP是一个端到端的可靠的面向连接的协议，所以HTTP基于传输�
 
 响应报文：
 
-![response](C:\Users\z\Desktop\response.jpg)
+![response](../../statics/response.jpg)
 
 响应报文
 
@@ -79,7 +79,7 @@ TCP是一个端到端的可靠的面向连接的协议，所以HTTP基于传输�
 
 在页面显示的过程中会多次进行Reflow和Repaint操作，而Reflow的成本比Repaint的成本高得多的多。因为Repaint只是将某个部分进行重新绘制而不用改变页面的布局，如：改变了某个元素的背景颜色。而如果将元素的display属性由block改为none则需要Reflow。
 
-![performance](C:\Users\z\Desktop\performance.jpg)
+![performance](../../statics/performance.jpg)
 
 减少rpaint和reflow 方法
 
