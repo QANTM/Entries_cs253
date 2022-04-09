@@ -30,7 +30,7 @@
 
   这些标头仅对单个传输级连接有意义，并且*不得*由代理重新传输或缓存。请注意，只能使用标头设置逐跳标[`Connection`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Connection)头。
 
-## [验证](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers#authentication)
+## 验证
 
 - [`WWW-Authenticate`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/WWW-Authenticate)
 
@@ -48,7 +48,7 @@
 
   包含使用代理服务器对用户代理进行身份验证的凭据。
 
-## [缓存](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers#caching)
+## 缓存
 
 - [`Age`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Age)
 
@@ -74,7 +74,7 @@
 
   有关可能出现的问题的一般警告信息。
 
-## [客户提示](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers#client_hints)
+## 客户提示
 
 HTTP[客户端提示](https://developer.mozilla.org/en-US/docs/Web/HTTP/Client_hints)是一组请求标头，它们提供有关客户端的有用信息，例如设备类型和网络条件，并允许服务器优化针对这些条件提供的服务。
 
@@ -90,7 +90,7 @@ HTTP[客户端提示](https://developer.mozilla.org/en-US/docs/Web/HTTP/Client_h
 
 下面列出了不同类别的客户端提示。
 
-### [用户代理客户端提示](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers#user_agent_client_hints)
+### 用户代理客户端提示
 
 [UA 客户端提示](https://developer.mozilla.org/en-US/docs/Web/HTTP/Client_hints#user-agent_client_hints)是请求标头，提供有关用户代理及其运行的平台/架构的信息：
 
@@ -130,7 +130,7 @@ HTTP[客户端提示](https://developer.mozilla.org/en-US/docs/Web/HTTP/Client_h
 
   用户代理的底层操作系统版本。
 
-### [设备客户端提示](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers#device_client_hints)
+### 设备客户端提示
 
 - [`Content-DPR`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-DPR) 
 
@@ -152,7 +152,7 @@ HTTP[客户端提示](https://developer.mozilla.org/en-US/docs/Web/HTTP/Client_h
 
   一个数字，以物理像素表示所需的资源宽度（即图像的固有大小）。
 
-### [网络客户端提示](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers#network_client_hints)
+### 网络客户端提示
 
 网络客户端提示允许服务器根据用户选择以及网络带宽和延迟来选择发送什么信息。
 
@@ -172,7 +172,7 @@ HTTP[客户端提示](https://developer.mozilla.org/en-US/docs/Web/HTTP/Client_h
 
   一个布尔值，指示用户代理对减少数据使用的偏好。
 
-## [条件句](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers#conditionals)
+## 条件句
 
 - [`Last-Modified`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Last-Modified)
 
@@ -202,7 +202,7 @@ HTTP[客户端提示](https://developer.mozilla.org/en-US/docs/Web/HTTP/Client_h
 
   确定如何匹配请求标头以决定是否可以使用缓存的响应，而不是从源服务器请求新的响应。
 
-## [连接管理](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers#connection_management)
+## 连接管理
 
 - [`Connection`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Connection)
 
@@ -212,9 +212,9 @@ HTTP[客户端提示](https://developer.mozilla.org/en-US/docs/Web/HTTP/Client_h
 
   控制持久连接应保持打开状态的时间。
 
-## [内容协商](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers#content_negotiation)
+## Content_negotiation
 
-[内容协](https://developer.mozilla.org/en-US/docs/Web/HTTP/Content_negotiation)商标头。
+内容协商标头。
 
 - [`Accept`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept)
 
@@ -228,7 +228,7 @@ HTTP[客户端提示](https://developer.mozilla.org/en-US/docs/Web/HTTP/Client_h
 
   通知服务器有关服务器应发回的人类语言。这是一个提示，不一定在用户的完全控制之下：服务器应始终注意不要覆盖明确的用户选择（例如从下拉列表中选择语言）。
 
-## [控件](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers#controls)
+## Controls
 
 - [`Expect`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Expect)
 
@@ -238,7 +238,7 @@ HTTP[客户端提示](https://developer.mozilla.org/en-US/docs/Web/HTTP/Client_h
 
   待定
 
-## [饼干](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers#cookies)
+## Cookies
 
 - [`Cookie`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cookie)
 
@@ -248,7 +248,7 @@ HTTP[客户端提示](https://developer.mozilla.org/en-US/docs/Web/HTTP/Client_h
 
   将 cookie 从服务器发送到用户代理。
 
-## [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers#cors)
+## CORS
 
 *[在此处](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)了解有关 CORS的更多信息。*
 
@@ -292,13 +292,13 @@ HTTP[客户端提示](https://developer.mozilla.org/en-US/docs/Web/HTTP/Client_h
 
   指定允许查看通过[Resource Timing API](https://developer.mozilla.org/en-US/docs/Web/API/Resource_Timing_API)的功能检索到的属性值的来源，否则由于跨域限制，这些属性将被报告为零。
 
-## [下载](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers#downloads)
+## Downloads
 
 - [`Content-Disposition`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Disposition)
 
   指示传输的资源是否应内联显示（默认行为不带标头），或者是否应像下载一样处理并且浏览器应显示“另存为”对话框。
 
-## [消息体信息](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers#message_body_information)
+## Message_body_information)
 
 - [`Content-Length`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Length)
 
@@ -320,7 +320,7 @@ HTTP[客户端提示](https://developer.mozilla.org/en-US/docs/Web/HTTP/Client_h
 
   指示返回数据的备用位置。
 
-## [代理](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers#proxies)
+## Proxies)
 
 - [`Forwarded`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Forwarded)
 
@@ -342,13 +342,13 @@ HTTP[客户端提示](https://developer.mozilla.org/en-US/docs/Web/HTTP/Client_h
 
   由代理添加，包括正向和反向代理，并且可以出现在请求标头和响应标头中。
 
-## [重定向](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers#redirects)
+## Redirects
 
 - [`Location`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Location)
 
   指示要将页面重定向到的 URL。
 
-## [请求上下文](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers#request_context)
+## Request_context
 
 - [`From`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/From)
 
@@ -370,7 +370,7 @@ HTTP[客户端提示](https://developer.mozilla.org/en-US/docs/Web/HTTP/Client_h
 
   包含一个特征字符串，允许网络协议对等体识别请求软件用户代理的应用程序类型、操作系统、软件供应商或软件版本。另请参阅[Firefox 用户代理字符串参考](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent/Firefox)。
 
-## [响应上下文](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers#response_context)
+## Response_context
 
 - [`Allow`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Allow)
 
@@ -380,7 +380,7 @@ HTTP[客户端提示](https://developer.mozilla.org/en-US/docs/Web/HTTP/Client_h
 
   包含有关源服务器用于处理请求的软件的信息。
 
-## [范围请求](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers#range_requests)
+## Range_requests
 
 - [`Accept-Ranges`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Ranges)
 
@@ -398,7 +398,7 @@ HTTP[客户端提示](https://developer.mozilla.org/en-US/docs/Web/HTTP/Client_h
 
   指示部分消息在完整消息中的位置。
 
-## [安全](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers#security)
+## Security
 
 - [`Cross-Origin-Embedder-Policy`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cross-Origin-Embedder-Policy)(COEP)
 
@@ -464,7 +464,7 @@ HTTP[客户端提示](https://developer.mozilla.org/en-US/docs/Web/HTTP/Client_h
 
   启用跨站点脚本过滤。
 
-### [HTTP 公钥固定 (HPKP)](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers#http_public_key_pinning_hpkp)
+### HTTP_public_key_pinning（hpkp）
 
 [HTTP 公钥固定](https://developer.mozilla.org/en-US/docs/Glossary/HPKP)已被弃用并删除，以支持证书透明度和[`Expect-CT`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Expect-CT).
 
@@ -476,7 +476,7 @@ HTTP[客户端提示](https://developer.mozilla.org/en-US/docs/Web/HTTP/Client_h
 
   将报告发送到标头中指定的报告 uri，即使违反了固定，仍然允许客户端连接到服务器。
 
-### [获取元数据请求标头](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers#fetch_metadata_request_headers)
+### Fetch_metadata_request_headers
 
 [获取元数据请求标头](https://developer.mozilla.org/en-US/docs/Glossary/Fetch_metadata_request_header)提供有关发起请求的上下文的信息。这允许服务器根据请求的来源以及资源的使用方式来决定是否应允许请求。
 
@@ -500,7 +500,7 @@ HTTP[客户端提示](https://developer.mozilla.org/en-US/docs/Web/HTTP/Client_h
 
   [`fetch()`](https://developer.mozilla.org/en-US/docs/Web/API/fetch)在服务工作者启动期间 以抢占式请求发送到资源的请求标头。用 设置的值[`NavigationPreloadManager.setHeaderValue()`](https://developer.mozilla.org/en-US/docs/Web/API/NavigationPreloadManager/setHeaderValue)可用于通知服务器应返回与正常`fetch()`操作不同的资源。
 
-## [服务器发送的事件](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers#server-sent_events)
+## Server-sent events
 
 - [`Last-Event-ID`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Last-Event-ID)
 
@@ -522,7 +522,7 @@ HTTP[客户端提示](https://developer.mozilla.org/en-US/docs/Web/HTTP/Client_h
 
   用于指定浏览器向其发送警告和错误报告的服务器端点。
 
-## [转移编码](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers#transfer_coding)
+## Transfer_coding
 
 - [`Transfer-Encoding`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Transfer-Encoding)
 
@@ -536,7 +536,7 @@ HTTP[客户端提示](https://developer.mozilla.org/en-US/docs/Web/HTTP/Client_h
 
   允许发件人在分块消息的末尾包含其他字段。
 
-## [网络套接字](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers#websockets)
+## Websockets
 
 - [`Sec-WebSocket-Key`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-WebSocket-Key)
 
@@ -558,7 +558,7 @@ HTTP[客户端提示](https://developer.mozilla.org/en-US/docs/Web/HTTP/Client_h
 
   待定
 
-## [其他](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers#other)
+## Other
 
 - [`Accept-Push-Policy`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Push-Policy) 
 
@@ -643,13 +643,3 @@ HTTP[客户端提示](https://developer.mozilla.org/en-US/docs/Web/HTTP/Client_h
 - [`X-UA-Compatible`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-UA-Compatible) 
 
   由 Internet Explorer 用来指示要使用的文档模式。
-
-## [贡献](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers#contributing)
-
-您可以通过[编写新条目](https://developer.mozilla.org/en-US/docs/MDN/Contribute/Howto/Document_an_HTTP_header)或改进现有条目来提供帮助。
-
-## [也可以看看](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers#see_also)
-
-- [HTTP 标头列表上的维基百科页面](https://en.wikipedia.org/wiki/List_of_HTTP_header_fields)
-- [IANA 注册](https://www.iana.org/assignments/message-headers/perm-headers.html)
-- [HTTP 工作组](https://httpwg.org/specs/)
